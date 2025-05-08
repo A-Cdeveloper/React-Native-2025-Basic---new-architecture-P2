@@ -16,11 +16,12 @@ const HomeScreen = () => {
       <Spacer height={10} />
       <ThemeText>Reading List app</ThemeText>
       <Spacer />
-      <Link style={styles.link} href="/about">
-        <ThemeText>About</ThemeText>
+      {/*  */}
+      <Link style={styles.link} href="/login">
+        <ThemeText>Login Page</ThemeText>
       </Link>
-      <Link style={styles.link} href="/contact">
-        <ThemeText>Contact</ThemeText>
+      <Link style={styles.link} href="/register">
+        <ThemeText>Register Page</ThemeText>
       </Link>
     </ThemeView>
   );
