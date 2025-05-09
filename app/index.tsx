@@ -23,6 +23,9 @@ const HomeScreen = () => {
       <Link style={styles.link} href="/register">
         <ThemeText>Register Page</ThemeText>
       </Link>
+      <Link style={styles.link} href="/profile">
+        <ThemeText>Profile</ThemeText>
+      </Link>
     </ThemeView>
   );
 };
