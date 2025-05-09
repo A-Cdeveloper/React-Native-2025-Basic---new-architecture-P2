@@ -6,7 +6,7 @@ import ThemedView from "../../components/ThemeView";
 
 const Create = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={styles.container} safeArea>
       <ThemedText title={true} style={styles.heading}>
         Add a New Book
       </ThemedText>
@@ -20,8 +20,6 @@ export default Create;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
   heading: {
     fontWeight: "bold",

@@ -6,7 +6,7 @@ import ThemedView from "../../components/ThemeView";
 
 const Profile = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={styles.container} safeArea>
       <ThemedText title={true} style={styles.heading}>
         Your Email
       </ThemedText>
@@ -23,8 +23,6 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
   heading: {
     fontWeight: "bold",
