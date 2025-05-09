@@ -6,13 +6,16 @@ import ThemeButton from "../../components/ThemeButton";
 import ThemeText from "../../components/ThemeText";
 import ThemeTextInput from "../../components/ThemeTextInput";
 import ThemeView from "../../components/ThemeView";
+import { useUserContext } from "../../context/userContext";
 
 const LoginScreen = () => {
+  const { user } = useUserContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleSubmit = () => {
-    console.log("You entered", email, password);
+    console.log("Login", email, password);
+    console.log("current user", user);
   };
 
   return (
