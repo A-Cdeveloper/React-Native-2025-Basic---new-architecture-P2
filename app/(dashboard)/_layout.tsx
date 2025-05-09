@@ -13,13 +13,13 @@ const DashboardLayout = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: theme.navBackground,
-          // backgroundColor: "red",
-          padding: 10,
-          height: 80,
+          //backgroundColor: "red",
+          height: 90,
         },
         tabBarActiveTintColor: theme.iconColorFocused,
         tabBarInactiveTintColor: theme.iconColor,
         tabBarLabelStyle: { fontSize: 13, fontWeight: "bold" },
+        tabBarItemStyle: { marginVertical: 10 },
       }}
     >
       <Tabs.Screen
