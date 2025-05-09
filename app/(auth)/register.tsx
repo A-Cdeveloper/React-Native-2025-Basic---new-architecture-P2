@@ -6,12 +6,20 @@ import ThemeButton from "../../components/ThemeButton";
 import ThemeText from "../../components/ThemeText";
 import ThemeTextInput from "../../components/ThemeTextInput";
 import ThemeView from "../../components/ThemeView";
+import { useUserContext } from "../../context/userContext";
 
 const RegisterScreen = () => {
+  const { register } = useUserContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const handleSubmit = () => {
-    console.log("Register", email, password);
+
+  const handleSubmit = async () => {
+    try {
+      await register(email, password);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   };
 
   return (

@@ -1,4 +1,6 @@
 import { createContext, use, useState } from "react";
+import { account } from "../lib/appwrite";
+import { ID } from "appwrite";
 
 export type User = {
   name: string;
@@ -8,21 +10,40 @@ export type User = {
 type UserContextType = {
   user: User | null;
   isAuthenticated: boolean;
-  login?: (email: string, password: string) => void;
+  login: (email: string, password: string) => void;
   logout?: () => void;
-  register?: (email: string, password: string) => void;
+  register: (email: string, password: string) => void;
 };
 
 export const UserContext = createContext<UserContextType>({
   user: null,
   isAuthenticated: false,
+  login: async () => {},
+  register: async () => {},
 });
 
 export const UserProvider = ({ children }: { children: any }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = async (email: string, password: string) => {};
-  const register = async (email: string, password: string) => {};
+  const login = async (email: string, password: string) => {
+    try {
+      await account.createEmailPasswordSession(email, password);
+      const user = await account.get();
+      setUser(user);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+  const register = async (email: string, password: string) => {
+    try {
+      await account.create(ID.unique(), email, password);
+      await login(email, password);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
   const logout = () => {};
 
   const value = {

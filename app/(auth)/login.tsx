@@ -9,13 +9,17 @@ import ThemeView from "../../components/ThemeView";
 import { useUserContext } from "../../context/userContext";
 
 const LoginScreen = () => {
-  const { user } = useUserContext();
+  const { login } = useUserContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = () => {
-    console.log("Login", email, password);
-    console.log("current user", user);
+  const handleSubmit = async () => {
+    try {
+      await login(email, password);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   };
 
   return (
