@@ -13,12 +13,12 @@ const ThemeButton = ({
   children,
   style,
 }: {
-  onPress: () => void;
+  onPress?: () => void;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }) => {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme ?? "light"];
+  // const colorScheme = useColorScheme();
+  // const theme = Colors[colorScheme ?? "light"];
 
   return (
     <Pressable

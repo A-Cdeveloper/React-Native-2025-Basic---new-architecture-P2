@@ -60,7 +60,10 @@ export const UserProvider = ({ children }: { children: any }) => {
       }
     }
   };
-  const logout = () => {};
+  const logout = async () => {
+    await account.deleteSession("current");
+    setUser(null);
+  };
 
   const value = {
     user,
