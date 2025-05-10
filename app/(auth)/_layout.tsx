@@ -5,8 +5,8 @@ import { StyleSheet } from "react-native";
 import { useUserContext } from "../../context/userContext";
 
 const AuthLayout = () => {
-  const { user } = useUserContext();
-  console.log(user);
+  const { user, isAuthenticated } = useUserContext();
+  console.log(user, isAuthenticated);
   return (
     <>
       <StatusBar style="auto" />

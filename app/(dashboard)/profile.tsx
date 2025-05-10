@@ -7,7 +7,7 @@ import { useUserContext } from "../../context/userContext";
 import ThemeButton from "../../components/ThemeButton";
 
 const Profile = () => {
-  const { logout, user } = useUserContext();
+  const { logout, user, isAuthenticated } = useUserContext();
 
   return (
     <ThemedView style={styles.container}>
@@ -19,7 +19,7 @@ const Profile = () => {
       <ThemedText>Time to start reading some books...</ThemedText>
       <Spacer />
 
-      <ThemeButton onPress={logout}>Logout</ThemeButton>
+      {isAuthenticated && <ThemeButton onPress={logout}>Logout</ThemeButton>}
     </ThemedView>
   );
 };

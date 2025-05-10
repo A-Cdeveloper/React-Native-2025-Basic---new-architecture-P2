@@ -1,4 +1,4 @@
-import { createContext, use, useState } from "react";
+import { createContext, use, useEffect, useState } from "react";
 import { account } from "../lib/appwrite";
 import { AppwriteException, ID } from "appwrite";
 
@@ -64,6 +64,26 @@ export const UserProvider = ({ children }: { children: any }) => {
     await account.deleteSession("current");
     setUser(null);
   };
+
+  const getInitialUserValue = async () => {
+    try {
+      const user = await account.get();
+      setUser(user);
+    } catch (error: unknown) {
+      setUser(null);
+      if (error instanceof AppwriteException) {
+        throw {
+          type: error.type || "AppwriteException",
+          message: error.message,
+          code: error.code,
+        } as ErrorType;
+      }
+    }
+  };
+
+  useEffect(() => {
+    getInitialUserValue();
+  }, []);
 
   const value = {
     user,
