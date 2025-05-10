@@ -12,10 +12,12 @@ const ThemeButton = ({
   onPress,
   children,
   style,
+  ...props
 }: {
   onPress?: () => void;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
+  [key: string]: any;
 }) => {
   // const colorScheme = useColorScheme();
   // const theme = Colors[colorScheme ?? "light"];
@@ -24,6 +26,7 @@ const ThemeButton = ({
     <Pressable
       style={({ pressed }) => [styles.btn, pressed && styles.pressed, style]}
       onPress={onPress}
+      {...props}
       //   android_ripple={{ color: theme.iconColorFocused }}
       //   android_disableSound={false}
     >

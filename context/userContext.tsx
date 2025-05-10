@@ -3,6 +3,7 @@ import { account } from "../lib/appwrite";
 import { AppwriteException, ID } from "appwrite";
 
 export type User = {
+  $id: string;
   name: string;
   email: string;
 };

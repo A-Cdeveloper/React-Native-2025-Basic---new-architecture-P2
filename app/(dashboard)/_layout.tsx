@@ -1,12 +1,14 @@
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
-import { Colors } from "../../constants/colors";
-import { Ionicons } from "@expo/vector-icons";
 import ProtectedContent from "../../components/auth/ProtectedContent";
+import { Colors } from "../../constants/colors";
+import { useBooksContext } from "../../context/bookContext";
 
 const DashboardLayout = () => {
   const colorSheme = useColorScheme();
   const theme = Colors[colorSheme ?? "light"];
+  const { books } = useBooksContext();
 
   return (
     <ProtectedContent>
@@ -37,10 +39,11 @@ const DashboardLayout = () => {
             ),
           }}
         />
+
         <Tabs.Screen
           name="books"
           options={{
-            title: "Books",
+            title: `Books (${books.length})`,
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
                 name={focused ? "book" : "book-outline"}
