@@ -1,10 +1,16 @@
 import { createContext, use, useState } from "react";
 import { account } from "../lib/appwrite";
-import { ID } from "appwrite";
+import { AppwriteException, ID } from "appwrite";
 
 export type User = {
   name: string;
   email: string;
+};
+
+export type ErrorType = {
+  type: string;
+  message: string;
+  code: number;
 };
 
 type UserContextType = {
@@ -30,18 +36,28 @@ export const UserProvider = ({ children }: { children: any }) => {
       await account.createEmailPasswordSession(email, password);
       const user = await account.get();
       setUser(user);
-    } catch (error) {
-      console.log(error);
-      throw error;
+    } catch (error: unknown) {
+      if (error instanceof AppwriteException) {
+        throw {
+          type: error.type || "AppwriteException",
+          message: error.message,
+          code: error.code,
+        } as ErrorType;
+      }
     }
   };
   const register = async (email: string, password: string) => {
     try {
       await account.create(ID.unique(), email, password);
       await login(email, password);
-    } catch (error) {
-      console.log(error);
-      throw error;
+    } catch (error: unknown) {
+      if (error instanceof AppwriteException) {
+        throw {
+          type: error.type || "AppwriteException",
+          message: error.message,
+          code: error.code,
+        } as ErrorType;
+      }
     }
   };
   const logout = () => {};

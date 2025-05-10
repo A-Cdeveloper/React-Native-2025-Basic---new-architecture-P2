@@ -7,18 +7,20 @@ import ThemeText from "../../components/ThemeText";
 import ThemeTextInput from "../../components/ThemeTextInput";
 import ThemeView from "../../components/ThemeView";
 import { useUserContext } from "../../context/userContext";
+import { Colors } from "../../constants/colors";
 
 const LoginScreen = () => {
   const { login } = useUserContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<null>(null);
 
   const handleSubmit = async () => {
+    setError(null);
     try {
       await login(email, password);
-    } catch (error) {
-      console.log(error);
-      throw error;
+    } catch (error: any) {
+      setError(error.message);
     }
   };
 
@@ -51,6 +53,10 @@ const LoginScreen = () => {
 
         <ThemeButton onPress={handleSubmit}>Login</ThemeButton>
 
+        <Spacer height={20} />
+
+        {error && <ThemeText style={[styles.error]}>{error}</ThemeText>}
+
         <Spacer height={100} />
         <Link href="/register">
           <ThemeText style={{ textAlign: "center" }}>
@@ -74,6 +80,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     marginBottom: 20,
+    fontWeight: "bold",
+  },
+  error: {
+    color: Colors.warning,
+    textAlign: "center",
+    paddingHorizontal: 20,
+    backgroundColor: "#f5c1c8",
+    borderRadius: 6,
+    borderWidth: 1,
+    width: "80%",
+    padding: 15,
     fontWeight: "bold",
   },
 });
