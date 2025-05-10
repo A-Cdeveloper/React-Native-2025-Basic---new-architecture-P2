@@ -3,6 +3,7 @@ import { Colors } from "../constants/colors";
 import { useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { UserProvider } from "../context/userContext";
+import ProtectedContent from "../components/auth/ProtectedContent";
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();

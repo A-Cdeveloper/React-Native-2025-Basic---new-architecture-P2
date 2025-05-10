@@ -1,9 +1,9 @@
 import { Link } from "expo-router";
-import { StyleSheet, Text } from "react-native";
-import ThemeLogo from "../components/ThemeLogo";
-import ThemeView from "../components/ThemeView";
+import { StyleSheet } from "react-native";
 import Spacer from "../components/Spacer";
+import ThemeLogo from "../components/ThemeLogo";
 import ThemeText from "../components/ThemeText";
+import ThemeView from "../components/ThemeView";
 
 const HomeScreen = () => {
   return (

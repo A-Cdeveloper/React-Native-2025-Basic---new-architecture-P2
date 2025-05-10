@@ -2,6 +2,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet } from "react-native";
+import UserContent from "../../components/auth/UserContent";
 import { useUserContext } from "../../context/userContext";
 
 const AuthLayout = () => {
@@ -10,12 +11,14 @@ const AuthLayout = () => {
   return (
     <>
       <StatusBar style="auto" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          animation: "fade",
-        }}
-      />
+      <UserContent>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            animation: "fade",
+          }}
+        />
+      </UserContent>
     </>
   );
 };
