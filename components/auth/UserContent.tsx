@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { useUserContext } from "../../context/userContext";
-import { Text } from "react-native";
+import ThemeLoader from "../ThemeLoader";
 
 type ProtectedProps = {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const UserContent = ({ children }: ProtectedProps) => {
   }, [isAuthenticated, user]);
 
   if (!isAuthenticated && user) {
-    return <Text>Loading...</Text>; // or loading spinner while redirecting
+    return <ThemeLoader />;
   }
 
   return <>{children}</>;

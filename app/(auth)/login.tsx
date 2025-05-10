@@ -6,8 +6,8 @@ import ThemeButton from "../../components/ThemeButton";
 import ThemeText from "../../components/ThemeText";
 import ThemeTextInput from "../../components/ThemeTextInput";
 import ThemeView from "../../components/ThemeView";
-import { useUserContext } from "../../context/userContext";
 import { Colors } from "../../constants/colors";
+import { useUserContext } from "../../context/userContext";
 
 const LoginScreen = () => {
   const { login } = useUserContext();
